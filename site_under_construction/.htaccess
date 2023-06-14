@@ -1,1 +1,5 @@
-DirectoryIndex under_construction.html
+DirectoryIndex under_construction.php
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !/under_construction.php$
+RewriteRule $ /under_construction.php [R=302,L]
