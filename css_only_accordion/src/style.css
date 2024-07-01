@@ -1,0 +1,100 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font: 16px/1.5 sans-serif;
+	color: rgb(28 39 46);
+	background-color: rgb(230 242 250);
+}
+			
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.page-wrapper {
+	box-sizing: content-box;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.accordion-group {
+	margin: 1rem 0;
+}
+
+.accordion {
+	background-color: rgb(201 227 245);
+	border-radius: 1rem;
+	box-shadow: 0 5px 5px -5px rgb(52 80 99);
+}
+
+.accordion + .accordion {
+	margin-top: 1rem;
+}
+
+.ac-state {
+	display: none;
+}
+
+.ac-trigger {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	padding: 1rem;
+	border-radius: 1rem;
+}
+
+.ac-trigger:hover,
+.ac-trigger:focus {
+	background-color: rgb(174 216 245);
+}
+
+.ac-title {
+	font-weight: 600;
+}
+
+.ac-content {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 300ms ease;
+}
+
+.ac-content-inner {
+	overflow: hidden;
+	padding: 0 1rem;
+}
+
+.ac-content img {
+	display: block;
+	margin: 0 auto;
+}
+
+.ac-state:not(:checked) ~ .ac-trigger .ac-icon-close {
+	display: none;
+}
+
+.ac-state:checked ~ .ac-trigger {
+	background-color: rgb(174 216 245);
+	box-shadow: 0 5px 5px -5px rgb(52 80 99);
+}
+
+.ac-state:checked ~ .ac-trigger .ac-icon-open {
+	display: none;
+}
+
+.ac-state:checked ~ .ac-content {
+	grid-template-rows: 1fr;
+}
