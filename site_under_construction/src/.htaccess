@@ -1,0 +1,10 @@
+DirectoryIndex under_construction.php
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !/under_construction.php$
+# Enable asset files to reach while under construction
+RewriteCond %{REQUEST_URI} !/background.jpeg$
+RewriteCond %{REQUEST_URI} !/logo.png$
+# Change 0.0.0.0 to your IP address and uncomment the following line if you want to access the page
+# RewriteCond %{REMOTE_ADDR} !^0.0.0.0
+RewriteRule $ /under_construction.php [R=302,L]
