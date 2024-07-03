@@ -12,8 +12,8 @@
 
         this.options = (
             arguments[0] && typeof arguments[0] === 'object' ?
-                { ...defaults, ...arguments[0] } :
-                defaults
+            { ...defaults, ...arguments[0] } :
+            defaults
         )
 
         init.call(this);
@@ -32,9 +32,37 @@
 
                 positionSlides.call(this, slider, slide)
 
+                return true
+
             }
 
         }
+
+        return false
+
+    }
+
+    Slider.prototype.prev = function () {
+
+        const slider = this.container
+
+        const activeSlider = activeSlide.call(this, slider);
+
+        const slide = prevSlide.call(this, slider, activeSlider)
+
+        return this.slideTo(slide)
+
+    }
+
+    Slider.prototype.next = function () {
+
+        const slider = this.container
+
+        const activeSlider = activeSlide.call(this, slider);
+
+        const slide = nextSlide.call(this, slider, activeSlider)
+
+        return this.slideTo(slide)
 
     }
 
@@ -61,6 +89,20 @@
 
         beforePrev.css({ '--offset': 'var(--prev-offset)' })
         afterNext.css({ '--offset': 'var(--next-offset)' })
+
+    }
+
+    function activeSlide(slider) {
+
+        let activeSlide = slider.find(this.options.slide + '.active')
+
+        if (activeSlide) {
+
+            return activeSlide
+
+        }
+
+        return slider.find(this.options.slide).first()
 
     }
 
